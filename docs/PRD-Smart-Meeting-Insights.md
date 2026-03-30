@@ -360,11 +360,16 @@ Rationale: normalized core entities + JSON for flexible AI fields (MVP speed); m
 
 ---
 
-## 13. Open questions
+## 13. Open questions are answered with resolved decisions - 
 
-- Which LLM provider and deployment (cloud API vs. private)? Use a free LLM like Ollama or Mistral using Groq API or suggest some free open source option that is good for MVP
-- Store raw transcript in DB vs. object storage only? Store raw transcript in DB for now.
-- Auth: defer to P1 or implement API key from day one? - implement API key from day one
+1. LLM provider and deployment
+For MVP, use a hosted open-weight LLM API to minimize infrastructure complexity and accelerate delivery. Support Ollama locally for development/testing. Defer private/self-hosted deployment until compliance or scale requirements justify the operational overhead.
+
+2. Raw transcript storage
+For MVP, store raw transcript text in the relational database with strict file-size limits and secure handling. As scale grows, move raw transcript storage to object storage and keep metadata and structured insights in the database.
+
+3. Authentication
+Implement API key authentication from day one. This is sufficient for MVP protection of transcript upload and AI-processing endpoints, while full user auth and RBAC are deferred to a later phase.
 
 ---
 
